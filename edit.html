@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play games</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+  </head>
+  <body>
+    <header> 
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo"><p class="slogan">Power your Dreams</p>
+    </header>
+    <div class="catalogo">
+      <main>
+        <h1>Play games</h1>
+        <hr>
+        <section id="con_Form">
+          <h2>Editar productos </h2>
+          <div>
+            
+            <form id="contactForm" action="/update/{{product.0}}" method="POST"enctype="multipart/form-data" >
+                <fieldset>
+                  <input type="text" id="category" name="category" placeholder="Categoría" value={{product.1}}>
+                  <input type="text" id="name" name="name" placeholder="Nombre" value={{product.2}}>
+                  <input type="text" id="price" name="price" placeholder="Precio" value={{product.3}}>
+                  <input type="text" id "amount" name="amount" placeholder="Cantidad" value={{product.4}}>
+                  <input type="file" id="photo" name="photo" value={{product.5}}>
+                  <div><div class="registro"><button id="Register" type="submit">Editar</button></div> <div><a class="volver" href="{{ url_for('index') }}"><button id="Return" type="submit">Volver</button></a></div></div>
+                </fieldset>
+            </form>
+          </div>
+        </section>
+        
+      </main>
+      
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
+

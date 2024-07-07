@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play games</title>
+    <link href="static/styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <header> 
+      <img src="static/img/logo.png" alt="logo"><p class="slogan">Power your Dreams</p>
+    </header>
+    <div class="catalogo">
+      <main>
+        <h1>Play games</h1>
+        <hr>
+        <section id="con_Form">
+          <h2>Registrar nuevos productos </h2>
+          <div>
+            
+            <form id="contactForm" action="{{url_for('formProduct') }}" method="POST" enctype="multipart/form-data" >
+                <fieldset>
+                  <input type="text" id="category" name="category" placeholder="Categoría">
+                  <input type="text" id="name" name="name" placeholder="Nombre">
+                  <input type="text" id="price"name="price" placeholder="Precio">
+                  <input type="text" id="amount" name="amount" placeholder="Cantidad">
+                  <input type="file" id="photo" name="photo">
+                  <div><div class="registro"><button id="Register" type="submit">Registrar</button></div> <div><a class="volver" href="{{ url_for('index') }}"><button id="Return" type="submit">Volver</button></a></div></div>
+                </fieldset>
+            </form>
+          </div>
+        </section>
+
+          
+      </main>
+    </div>
+    <script src="static/script.js"></script>
+  </body>
+</html>
