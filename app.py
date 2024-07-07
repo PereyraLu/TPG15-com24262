@@ -89,5 +89,11 @@ def deleteProduct(id):
     flash("Contact deleted successfully")
     return redirect(url_for('index'))
 
+@app.errorhandler(404)
+def not_found(error):
+        return redirect(url_for('index'))
+
 if __name__=="__main__":
-    app.run(port=3000,debug=True)
+    app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT", default=5000))
+
+""" Prueba de cambios """
