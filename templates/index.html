@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play games</title>
+    <link href="static/styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <header> 
+        <img src="static/img/logo.png" alt="logo"><p class="slogan">Power your Dreams</p>
+    </header>
+    <div class="catalogo">
+      <main>
+        <h1>Play games</h1>
+        <section id="con_Table">
+          <h2>Productos disponibles </h2>
+          <hr>
+          <div>
+          <table class="tabla">
+            <caption>
+              <a href="{{ url_for('addProduct') }}"><button type="submit">Registrar nuevos productos</button></a>
+            </caption>
+            <thead>
+              <tr>
+                <th class="table">#</th>
+                <th class="table">Categoria</th>
+                <th class="table">Nombre</th>
+                <th class="table">Precio (ARS)</th>
+                <th class="table">cantidad</th>
+                <th class="table">Foto</th>
+                <th class="table">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for product in products  %}
+                <tr>
+                  <td class="tabla">{{product.0}}</td>
+                  <td class="tabla">{{product.1}}</td>
+                  <td class="tabla">{{product.2}}</td>
+                  <td class="tabla">{{product.3}}</td>
+                  <td class="tabla">{{product.4}}</td>
+                  <td class="tabla"><img src="{{ url_for('static', filename='img/products/'+product.5) }}" alt="Imagen del producto" width="50" height="50"></td>
+                  <td class="tabla">
+                    <a href="/edit/{{product.0}}"><button type="submit">Editar</button></a>
+                    <a href="/delete/{{product.0}}"><button type="submit">Borrar</button></a>
+                  </td>
+                </tr>
+             {%endfor%}
+            </tbody>
+          </table>
+        </div>
+        </section>
+
+          
+      </main>
+      <!--<hr class="bottom-line">
+      <footer>
+        <p>
+          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
+        </p>
+        <p class="address">123 Free Code Camp Drive</p>
+      </footer>-->
+    </div>
+  </body>
+</html>
