@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/img/products'
 
 # PostgreSQL connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iopleylx:FqBZHn28tHT2zLzdxqtE25JCcGXewZXf@motty.db.elephantsql.com/iopleylx'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://yllxstcj:1p3sJpJ3a-ywj6qIw_orkDueuNgKXJ9n@motty.db.elephantsql.com/yllxstcj'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 app.secret_key = 'mysecretkey'
 
 # Model definition
-class Product(db.Model):
+class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False)
@@ -25,7 +25,7 @@ class Product(db.Model):
 
 @app.route("/")
 def index():
-    products = Product.query.all()
+    products = Products.query.all()
     return render_template("index.html", products=products)
 
 @app.route('/register_product', methods=['GET', 'POST'])
