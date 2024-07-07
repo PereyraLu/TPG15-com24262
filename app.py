@@ -6,9 +6,9 @@ app=Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/img/products'
 
 #MySQL connection
-app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']=''
+app.config['MYSQL_HOST']='dpg-cq5dvalds78s73d0i390-a.oregon-postgres.render.com'
+app.config['MYSQL_USER']='pereyralu'
+app.config['MYSQL_PASSWORD']='eR3SjO1US6tNoCqOwv3PNPWFxgO2z4qX'
 app.config['MYSQL_DB']='gaming_products'
 mysql=MySQL(app)
 
