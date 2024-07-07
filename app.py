@@ -9,7 +9,7 @@ app.config['UPLOAD_FOLDER'] = 'static/img/products'
 app.config['MYSQL_HOST']='dpg-cq5dvalds78s73d0i390-a.oregon-postgres.render.com'
 app.config['MYSQL_USER']='pereyralu'
 app.config['MYSQL_PASSWORD']='eR3SjO1US6tNoCqOwv3PNPWFxgO2z4qX'
-app.config['MYSQL_DB']='gaming_products'
+app.config['MYSQL_DB']='products_40gm'
 mysql=MySQL(app)
 
 #settings
