@@ -27,7 +27,7 @@
                 <th class="table">Categoria</th>
                 <th class="table">Nombre</th>
                 <th class="table">Precio (ARS)</th>
-                <th class="table">cantidad</th>
+                <th class="table">Cantidad</th>
                 <th class="table">Foto</th>
                 <th class="table">Acciones</th>
               </tr>
@@ -35,15 +35,15 @@
             <tbody>
               {%for product in products  %}
                 <tr>
-                  <td class="tabla">{{product.0}}</td>
-                  <td class="tabla">{{product.1}}</td>
-                  <td class="tabla">{{product.2}}</td>
-                  <td class="tabla">{{product.3}}</td>
-                  <td class="tabla">{{product.4}}</td>
-                  <td class="tabla"><img src="{{ url_for('static', filename='img/products/'+product.5) }}" alt="Imagen del producto" width="50" height="50"></td>
+                  <th class="tabla" scope="row">{{ loop.index }}</th>
+                  <td class="tabla">{{product.name}}</td>
+                  <td class="tabla">{{product.category}}</td>
+                  <td class="tabla">{{product.price}}</td>
+                  <td class="tabla">{{product.amount}}</td>
+                  <td class="tabla"><img src="{{ url_for('static', filename='img/products/'+product.photo) }}" alt="Imagen del producto" width="50" height="50"></td>
                   <td class="tabla">
-                    <a href="/edit/{{product.0}}"><button type="submit">Editar</button></a>
-                    <a href="/delete/{{product.0}}"><button type="submit">Borrar</button></a>
+                    <a href="/edit/{{product.id}}"><button type="submit">Editar</button></a>
+                    <a href="/delete/{{product.id}}"><button type="submit">Borrar</button></a>
                   </td>
                 </tr>
              {%endfor%}

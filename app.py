@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/img/products'
 
 # PostgreSQL connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://yllxstcj:1p3sJpJ3a-ywj6qIw_orkDueuNgKXJ9n@motty.db.elephantsql.com/yllxstcj'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iopleylx:FqBZHn28tHT2zLzdxqtE25JCcGXewZXf@motty.db.elephantsql.com/iopleylx'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -23,10 +23,26 @@ class Products(db.Model):
     photo = db.Column(db.Text)
     amount = db.Column(db.Integer, nullable=False)
 
+""" @app.route("/")
+def index():
+    products = Products.query.all()
+    return render_template("index.html", products=products) """
+
+
 @app.route("/")
 def index():
     products = Products.query.all()
+    
+    # Imprimir products en la consola
+    print("Productos obtenidos de la base de datos:")
+    for product in products:
+        print(f"ID: {product.id}, Name: {product.name}, Category: {product.category}, Price: {product.price}, Amount {product.amount}, Photo {product.photo}")
+    
     return render_template("index.html", products=products)
+
+    
+
+
 
 @app.route('/register_product', methods=['GET', 'POST'])
 def addProduct():
@@ -44,7 +60,7 @@ def formProduct():
             if photo_file.filename != '':
                 filename = secure_filename(photo_file.filename)
                 photo_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                new_product = Product(category=category, name=name, price=price, amount=amount, photo=filename)
+                new_product = Products(category=category, name=name, price=price, amount=amount, photo=filename)
                 db.session.add(new_product)
                 db.session.commit()
                 flash("Product added successfully")
@@ -52,12 +68,12 @@ def formProduct():
 
 @app.route("/edit/<int:id>")
 def getProduct(id):
-    product = Product.query.get_or_404(id)
-    return render_template('edit.html', product=product)
+    products = Products.query.get_or_404(id)
+    return render_template('edit.html', products=products)
 
 @app.route("/update/<int:id>", methods=['POST'])
 def updateProduct(id):
-    product = Product.query.get_or_404(id)
+    product = Products.query.get_or_404(id)
     if request.method == 'POST':
         product.category = request.form['category']
         product.name = request.form['name']
@@ -75,7 +91,7 @@ def updateProduct(id):
 
 @app.route("/delete/<int:id>")
 def deleteProduct(id):
-    product = Product.query.get_or_404(id)
+    product = Products.query.get_or_404(id)
     db.session.delete(product)
     db.session.commit()
     flash("Product deleted successfully")
